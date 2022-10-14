@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+    So Simple Jekyll Theme 3.2.0
+    Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+    Free for personal and commercial use under the MIT license
+    https://github.com/mmistakes/so-simple-theme/blob/master/LICENSE
+-->
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}" class="no-js">
+    {% include head.html %}
+
+    <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %} {% if page.entries_layout == 'grid' %}page--wide{% endif %} {{ page.title | slugify }}">
+        {% include skip-links.html %}
+        {% if page.url == '/' or page.url contains '/page' %}
+            <div id="banner-container">
+                <div id="video-container" style="overflow: hidden; position: relative">
+                    <video id="video" playsinline autoplay muted loop style="width: 100%; filter:brightness(50%); margin-top: -20%; margin-bottom: -10%">
+                        <source src="/images/vid.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div style="position: absolute; left: 0; right: 0; top: 0">
+                        {% include navigation.html %}
+                    </div>
+                    <div style="position: absolute; left:  30%; right: 30%; bottom:30%; top: 30%;">
+                        {% include masthead.html %}
+                    </div>
+                </div>
+                <span id="video-container-fallback">
+                    {% include navigation.html %}
+                    </br>
+                    {% include masthead.html %}
+                </span>
+            </div>
+        {% else %}
+            {% include navigation.html %}
+            </br>
+            {% include masthead.html %}
+        {% endif %}
+
+        {{ content }}
+
+        {% include footer.html %}
+        {% include scripts.html %}
+    </body>
+
+    <script type="text/javascript">
+        var video_div = null;
+        var fallback = null;
+
+        function handleVideo() {
+
+            if (window.location.pathname == '/' || window.location.pathname.indexOf('/page') > -1) {
+                if (window.innerWidth < 768) {
+                    if (video_div === null) {
+                        video_div = $('#video-container').detach();
+                    }
+                    if (fallback !== null) {
+                        $('#banner-container').append(fallback);
+                        fallback = null;
+                    }
+                } else {
+                    if (fallback === null) {
+                        fallback = $('#video-container-fallback').detach();
+                    }
+                    if (video_div !== null) {
+                        $('#banner-container').prepend(video_div);
+                        $('#video').get(0).play();
+                        video_div = null;
+                    }
+                }
+            }
+
+        }
+
+        handleVideo();
+        addEventListener('resize', handleVideo);
+    </script>
+
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+    <script>
+    /* paste this line in verbatim */
+    window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+    /* customize formbutton below*/
+    formbutton("create", {
+        theme: "classic",
+        action: "https://formspree.io/f/xdojdnnk",
+        title: "Στείλε ένα μήνυμα",
+        description: "Αν δεν είσαι bot, θα σου απαντήσω το συντομότερο δυνατόν.",
+        fields: [
+            {
+                name: "name",
+                type: "text",
+                label: "Όνομα",
+                required: true,
+            },
+            {
+                type: "email",
+                label: "Email",
+                name: "email",
+                required: true,
+            },
+            {
+                type: "textarea",
+                label: "Μήνυμα",
+                name: "message",
+                required: true,
+            },
+            {
+                type: "submit",
+                value: "Αποστολή",
+            }
+        ],
+        onResponse: function(ok, setStatus) {
+            if (ok) {
+                setStatus("Μήνυμα ελήφθη! Ευχαριστώ πολύ!");
+            } else {
+                setStatus("<span style='color:red'>Κάτι πήγε στραβά... Δοκίμασε ξανά σε λίγο.</span>");
+            }
+        },
+        styles: {
+            button: {
+                background: "#C4001A"
+            },
+            title: {
+                background: "#C4001A",
+                letterSpacing: "0.05em",
+            }
+        }
+    });
+    </script>
+
+</html>

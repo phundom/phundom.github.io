@@ -1,0 +1,24 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+sitemap: false
+---
+
+@charset "utf-8";
+
+@import "so-simple";
+
+// make entries "jump up" on hover
+.entry {
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+}
+
+.entry:hover {
+    top: -10px;
+}
+
+// override entry-image class to smooth edges
+.entry-image {
+    border-radius: 10%;
+}
