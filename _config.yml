@@ -88,4 +88,5 @@ paginate_path: /page:num/
 
 search_full_content: true
 
-google_analytics: UA-175748841-1
+# google_analytics: UA-175748841-1
+google_analytics: G-JGDV952H08
