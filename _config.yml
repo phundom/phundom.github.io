@@ -56,7 +56,7 @@ remote_theme: "mmistakes/so-simple-theme@3.2.0"
 ### theme specific (i think)
 url: http://phundom.art
 locale: el-GR
-logo: /images/logo.png
+logo: /images/logo-256x256.png
 read_time: false
 words_per_minute: 100
 
