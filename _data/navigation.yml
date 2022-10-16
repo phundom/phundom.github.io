@@ -1,8 +1,11 @@
+- title: ΚΕΝΤΡΙΚΗ
+  url: /
+
 - title: ΑΜΠΑΟΥΤ
   url: /about/
 
 - title: ΚΑΤΗΓΟΡΙΕΣ
-  url: /categories
+  url: /categories/
 
 - title: ΑΝΑΖΗΤΗΣΗ
   url: /search/
